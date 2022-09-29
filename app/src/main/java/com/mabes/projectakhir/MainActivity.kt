@@ -18,9 +18,9 @@ class MainActivity : AppCompatActivity() {
         showRecyclerView()
     }
 
-    private fun showRecyclerView(){
+    private fun showRecyclerView(dataItem: List<DataItem>){
         viewBinding.listUserRv.layoutManager = LinearLayoutManager(this@MainActivity)
-        val adapter = RecyclerViewAdapter()
+        val adapter = RecyclerViewAdapter(dataItem)
         viewBinding.listUserRv.adapter = adapter
     }
 }
