@@ -9,4 +9,7 @@ interface ApiService {
 
     @GET("api/ranks")
     fun getUserRank():Call<RankResponse>
+
+    @GET("api/statuses")
+    fun getUserStatus():Call<StatusResponse>
 }
