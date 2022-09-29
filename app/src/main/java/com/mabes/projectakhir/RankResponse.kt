@@ -8,11 +8,11 @@ import kotlinx.android.parcel.Parcelize
 data class RankResponse(
 
 	@field:SerializedName("data")
-	val data: List<DataItemRank>
+	val data: List<DataRank>
 ) : Parcelable
 
 @Parcelize
-data class DataItemRank(
+data class DataRank(
 
 	@field:SerializedName("updated_at")
 	val updatedAt: String,
