@@ -5,8 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddPersonilActivity">
-
-    <TextView
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:paddingHorizontal="32dp"
+            android:layout_height="match_parent"> <TextView
         android:id="@+id/add_name_tv"
         android:layout_marginTop="32dp"
         android:layout_marginStart="32dp"
@@ -19,7 +24,7 @@
     <EditText
         android:id="@+id/add_name_edt"
         android:layout_marginStart="32dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="masukan nama anda.."
         android:textSize="12dp"
@@ -39,7 +44,7 @@
     <EditText
         android:id="@+id/add_NRP_edt"
         android:layout_marginStart="32dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="masukan nrp anda.."
         android:textSize="12dp"
@@ -57,9 +62,10 @@
         app:layout_constraintTop_toBottomOf="@id/add_NRP_edt"/>
 
     <EditText
+
         android:id="@+id/add_address_edt"
         android:layout_marginStart="32dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="masukan alamat anda.."
         android:textSize="12dp"
@@ -79,7 +85,7 @@
     <EditText
         android:id="@+id/add_tgl_lahir_edt"
         android:layout_marginStart="32dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="masukan tanggal lahir anda.."
         android:textSize="12dp"
@@ -99,7 +105,7 @@
     <EditText
         android:id="@+id/add_tempat_lahir_edt"
         android:layout_marginStart="32dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="masukan tempat lahir anda.."
         android:textSize="12dp"
@@ -121,6 +127,7 @@
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginHorizontal="32dp"
+
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -175,5 +182,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layout_status"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.mabes.projectakhir
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -31,6 +32,11 @@ class MainActivity : AppCompatActivity() {
         val adapter = ListPersonilAdapter(dataItem)
 
         viewBinding.listUserRv.adapter = adapter
+
+        viewBinding.listUserAddFab.setOnClickListener {
+            val intent = Intent(this,AddPersonilActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 
