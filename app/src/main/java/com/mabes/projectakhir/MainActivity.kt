@@ -2,8 +2,12 @@ package com.mabes.projectakhir
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mabes.projectakhir.databinding.ActivityMainBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityMainBinding
@@ -15,12 +19,36 @@ class MainActivity : AppCompatActivity() {
 
         viewBinding.listUserRv.setHasFixedSize(true)
 
-        showRecyclerView()
+        enqueueApi()
     }
 
     private fun showRecyclerView(dataItem: List<DataItem>){
-        viewBinding.listUserRv.layoutManager = LinearLayoutManager(this@MainActivity)
+        viewBinding.listUserRv.layoutManager = LinearLayoutManager(
+            this@MainActivity)
         val adapter = RecyclerViewAdapter(dataItem)
         viewBinding.listUserRv.adapter = adapter
+    }
+
+    private fun enqueueApi(){
+        val client = ApiConfig.getApiService().getUserList()
+        client.enqueue(object : Callback<ListPersonilResponse>{
+            override fun onResponse(
+                call: Call<ListPersonilResponse>,
+                response: Response<ListPersonilResponse>
+            ) {
+                if (response.isSuccessful){
+                    if (response.body() != null){
+                        showRecyclerView(response!!.body()!!.data)
+                    }
+                } else {
+                    Log.e("ON RESPONSE FAILURE", "onResponse: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<ListPersonilResponse>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+        })
     }
 }

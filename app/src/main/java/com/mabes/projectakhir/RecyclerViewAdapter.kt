@@ -3,13 +3,17 @@ package com.mabes.projectakhir
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.mabes.projectakhir.databinding.ItemRecyclerviewBinding
 
-class RecyclerViewAdapter(private val listPersonil : List<DataItem>):RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+class RecyclerViewAdapter(private val listPersonil : List<DataItem>)
+    :RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+
     class ViewHolder(var binding:ItemRecyclerviewBinding)
         :RecyclerView.ViewHolder(binding.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
+    : ViewHolder {
         val binding = ItemRecyclerviewBinding
             .inflate(LayoutInflater.from(parent.context),
                 parent,false)
@@ -17,7 +21,14 @@ class RecyclerViewAdapter(private val listPersonil : List<DataItem>):RecyclerVie
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val data = listPersonil[position]
+        holder.binding.itemNameTv.text = data.name
+        Glide.with(holder.binding.root)
+            .load(data.image)
+            .placeholder(R.drawable.ic_baseline_account_circle_24)
+            .into(holder.binding.itemImageIv)
+        holder.binding.itemPangkatTv.text = data.rank
+        holder.binding.itemNrpTv.text = data.nrp
     }
 
     override fun getItemCount(): Int = listPersonil.size
