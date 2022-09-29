@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mabes.projectakhir.databinding.ItemRecyclerviewBinding
 
-class RecyclerViewAdapter(private val listPersonil : List<DataItem>)
-    :RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+class ListPersonilAdapter(private val listPersonil : List<DataItem>)
+    :RecyclerView.Adapter<ListPersonilAdapter.ViewHolder>() {
 
     class ViewHolder(var binding:ItemRecyclerviewBinding)
         :RecyclerView.ViewHolder(binding.root)
@@ -17,11 +17,13 @@ class RecyclerViewAdapter(private val listPersonil : List<DataItem>)
         val binding = ItemRecyclerviewBinding
             .inflate(LayoutInflater.from(parent.context),
                 parent,false)
+
         return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = listPersonil[position]
+
         holder.binding.itemNameTv.text = data.name
         Glide.with(holder.binding.root)
             .load(data.image)

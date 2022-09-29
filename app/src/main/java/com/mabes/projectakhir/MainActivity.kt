@@ -1,5 +1,6 @@
 package com.mabes.projectakhir
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -15,18 +16,22 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_main)
+        setContentView(viewBinding.root)
 
         viewBinding.listUserRv.setHasFixedSize(true)
 
         enqueueApi()
     }
 
+    @SuppressLint("LongLogTag")
     private fun showRecyclerView(dataItem: List<DataItem>){
         viewBinding.listUserRv.layoutManager = LinearLayoutManager(
             this@MainActivity)
-        val adapter = RecyclerViewAdapter(dataItem)
+
+        val adapter = ListPersonilAdapter(dataItem)
+
         viewBinding.listUserRv.adapter = adapter
+
     }
 
     private fun enqueueApi(){
@@ -37,11 +42,13 @@ class MainActivity : AppCompatActivity() {
                 response: Response<ListPersonilResponse>
             ) {
                 if (response.isSuccessful){
-                    if (response.body() != null){
+                      if (response.body() != null){
                         showRecyclerView(response!!.body()!!.data)
-                    }
+                      }
                 } else {
-                    Log.e("ON RESPONSE FAILURE", "onResponse: ${response.message()}")
+                    Log.e("ON RESPONSE FAILURE",
+                        "onResponse: ${response.message()}"
+                    )
                 }
             }
 
