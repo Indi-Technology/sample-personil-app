@@ -6,14 +6,14 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class ListPersonilResponse(
+data class ListUserResponse(
 
 	@field:SerializedName("data")
-	val data: List<DataItem>
+	val data: List<DataUser>
 ) : Parcelable
 
 @Parcelize
-data class DataItem(
+data class DataUser(
 
 	@field:SerializedName("image")
 	val image: String,
