@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mabes.projectakhir.data.response.Data
+import com.mabes.projectakhir.data.response.BaseResponse
 import com.mabes.projectakhir.data.response.DetailUserResponse
 import com.mabes.projectakhir.data.response.retrofit.ApiConfig
 import retrofit2.Call
@@ -46,6 +47,33 @@ class DetailUserViewModel:ViewModel() {
                 _isLoading.value = false
                 Log.e(ContentValues.TAG, "onFailure: ${t.message}")
 
+            }
+
+        })
+    }
+
+    fun deleteUserById(id: Int){
+        _isLoading.value = true
+        val client = ApiConfig.getApiService().deleteUser(id)
+        client.enqueue(object : Callback<BaseResponse>{
+            override fun onResponse(
+                call: Call<BaseResponse>,
+                response: Response<BaseResponse>,
+            ) {
+                if (response.isSuccessful) {
+                    _isLoading.value = false
+                    if (response.body() != null) {
+                        _responseMessage.value = response.body()!!.message
+                    }
+                } else {
+                    _isLoading.value = false
+                    Log.e(ContentValues.TAG, "onFailure : ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
+                _isLoading.value = false
+                Log.e(ContentValues.TAG, "onFailure : ${t.message}")
             }
 
         })

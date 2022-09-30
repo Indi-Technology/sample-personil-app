@@ -3,6 +3,7 @@ package com.mabes.projectakhir.ui.detail
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import com.bumptech.glide.Glide
 import com.mabes.projectakhir.R
@@ -35,6 +36,17 @@ class DetailUserActivity : AppCompatActivity() {
                     .placeholder(R.drawable.ic_baseline_account_circle_24)
                     .into(detailIv)
             }
+        }
+
+        detailUserBinding.detailDeleteBtn.setOnClickListener { data->
+            val id = idUser
+            if (id != null) {
+                detailUserViewModel.deleteUserById(id)
+            }
+            detailUserViewModel.responseMessage.observe(this){
+                Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+            }
+
         }
 
         detailUserViewModel.isLoading.observe(this){

@@ -3,6 +3,7 @@ package com.mabes.projectakhir.data.response.retrofit
 
 import com.mabes.projectakhir.ListRankResponse
 import com.mabes.projectakhir.ListUserResponse
+import com.mabes.projectakhir.data.response.BaseResponse
 import com.mabes.projectakhir.data.response.DetailUserResponse
 
 import com.mabes.projectakhir.data.response.ListStatusResponse
@@ -37,6 +38,11 @@ interface ApiService {
     fun getUserById(
         @Path("id") id:Int
     ):Call<DetailUserResponse>
+
+    @DELETE("api/pers/{id}")
+    fun deleteUser(
+        @Path("id") id:Int
+    ):Call<BaseResponse>
 
 
 
