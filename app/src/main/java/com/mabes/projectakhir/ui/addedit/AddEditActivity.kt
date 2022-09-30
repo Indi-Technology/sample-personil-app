@@ -47,10 +47,10 @@ class AddEditActivity : AppCompatActivity() {
     }
 
     private fun showRank(data:List<DataRank>){
-        data.forEach({
+        data.forEach{
             listIdRank.add(it.id)
             listNameRank.add(it.name)
-        })
+        }
         val arrayAdapter = ArrayAdapter(this,
             com.google.android.material.R.layout.support_simple_spinner_dropdown_item, listNameRank)
         val actRanks:AutoCompleteTextView = addEditBinding.actPangkat
@@ -59,10 +59,10 @@ class AddEditActivity : AppCompatActivity() {
 
 
     private fun showStatus(data:List<DataStatus>){
-        data.forEach({
+        data.forEach{
             listIdStatus.add(it.id)
             listNameStatus.add(it.name)
-        })
+        }
         val arrayAdapter = ArrayAdapter(this,
             com.google.android.material.R.layout.support_simple_spinner_dropdown_item, listNameStatus)
         val actStatuses:AutoCompleteTextView = addEditBinding.actStatus
