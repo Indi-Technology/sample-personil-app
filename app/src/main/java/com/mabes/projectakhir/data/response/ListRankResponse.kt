@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class RankResponse(
+data class ListRankResponse(
 
 	@field:SerializedName("data")
 	val data: List<DataRank>
