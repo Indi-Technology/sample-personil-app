@@ -63,6 +63,9 @@ class ListUserAdapter
             .into(holder.binding.imgItemUser)
         holder.binding.tvItemRank.text = data.rank
         holder.binding.tvItemNRP.text = data.nrp
+        holder.binding.root.setOnClickListener{
+            onItemClickCallback.OnItemClicked(listItem[holder.adapterPosition])
+        }
     }
 
     override fun getItemCount(): Int = listItem.size
