@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.mabes.projectakhir.ui.addedit.AddPersonilActivity
+import com.mabes.projectakhir.ui.addedit.AddEditActivity
 import com.mabes.projectakhir.DataItem
 import com.mabes.projectakhir.ListPersonilResponse
 import com.mabes.projectakhir.data.response.retrofit.ApiConfig
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         viewBinding.listUserRv.adapter = adapter
 
         viewBinding.listUserAddFab.setOnClickListener {
-            val intent = Intent(this, AddPersonilActivity::class.java)
+            val intent = Intent(this, AddEditActivity::class.java)
             startActivity(intent)
         }
 

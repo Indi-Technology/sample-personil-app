@@ -14,7 +14,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class AddPersonilActivity : AppCompatActivity() {
+class AddEditActivity : AppCompatActivity() {
     private lateinit var binding:ActivityAddPersonilBinding
 
     private val listIdRank=ArrayList<Int>()
@@ -47,7 +47,7 @@ class AddPersonilActivity : AppCompatActivity() {
             override fun onResponse(call: Call<RankResponse>, response: Response<RankResponse>) {
                 if(response.isSuccessful){
                     val dataResponse = response.body()?.data
-                    Toast.makeText(this@AddPersonilActivity, "Sukses getData",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@AddEditActivity, "Sukses getData",Toast.LENGTH_SHORT).show()
                     Log.e("ON RESPONSE Success",
                         "onResponse: ${response.body()}"
                     )
