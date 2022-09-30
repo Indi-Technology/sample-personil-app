@@ -42,31 +42,6 @@ class AddEditActivity : AppCompatActivity() {
     }
 
     private fun getRank(){
-        val client = ApiConfig.getApiService().getUserRank()
-        client.enqueue(object : Callback<RankResponse>{
-            override fun onResponse(call: Call<RankResponse>, response: Response<RankResponse>) {
-                if(response.isSuccessful){
-                    val dataResponse = response.body()?.data
-                    Toast.makeText(this@AddEditActivity, "Sukses getData",Toast.LENGTH_SHORT).show()
-                    Log.e("ON RESPONSE Success",
-                        "onResponse: ${response.body()}"
-                    )
-                    if(dataResponse!=null){
-                        showRank(dataResponse)
 
-                    }
-
-                }
-
-            }
-
-            override fun onFailure(call: Call<RankResponse>, t: Throwable) {
-                TODO("Not yet implemented")
-                Log.e("ON RESPONSE error",
-                    "onResponse: }"
-                )
-            }
-
-        })
     }
 }
