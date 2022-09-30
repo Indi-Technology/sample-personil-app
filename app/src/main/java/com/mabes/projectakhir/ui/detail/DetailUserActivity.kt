@@ -2,6 +2,7 @@ package com.mabes.projectakhir.ui.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import com.bumptech.glide.Glide
 import com.mabes.projectakhir.R
@@ -36,5 +37,13 @@ class DetailUserActivity : AppCompatActivity() {
             }
         }
 
+        detailUserViewModel.isLoading.observe(this){
+            showLoading(it)
+        }
+
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        detailUserBinding.loading.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 }

@@ -65,7 +65,7 @@ class ListUserAdapter
         holder.binding.tvItemNRP.text = data.nrp
         holder.binding.root.setOnClickListener{
             onItemClickCallback.OnItemClicked(listItem[holder.adapterPosition])
-        }
+                   }
     }
 
     override fun getItemCount(): Int = listItem.size

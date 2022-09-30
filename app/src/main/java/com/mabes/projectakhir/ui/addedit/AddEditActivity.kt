@@ -73,7 +73,11 @@ class AddEditActivity : AppCompatActivity() {
 
 
 
+
+
     }
+
+
 
     private fun showRank(data:List<DataRank>){
         data.forEach{
