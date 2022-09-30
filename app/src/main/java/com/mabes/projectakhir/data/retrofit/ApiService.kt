@@ -3,6 +3,7 @@ package com.mabes.projectakhir.data.response.retrofit
 
 import com.mabes.projectakhir.ListRankResponse
 import com.mabes.projectakhir.ListUserResponse
+import com.mabes.projectakhir.data.response.DetailUserResponse
 
 import com.mabes.projectakhir.data.response.ListStatusResponse
 import com.mabes.projectakhir.data.response.SubmitResponse
@@ -35,7 +36,7 @@ interface ApiService {
     @GET("api/pers/{id}")
     fun getUserById(
         @Path("id") id:Int
-    )
+    ):Call<DetailUserResponse>
 
 
 
