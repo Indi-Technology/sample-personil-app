@@ -26,6 +26,11 @@ class AddEditViewModel:ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading:LiveData<Boolean> = _isLoading
 
+    init {
+        showRanks()
+        showStatuses()
+    }
+
     private fun showRanks(){
         val client = ApiConfig.getApiService().getUserRank()
         client.enqueue(object : Callback<ListRankResponse> {
@@ -45,7 +50,6 @@ class AddEditViewModel:ViewModel() {
 
         })
     }
-
 
     private fun showStatuses(){
         val client = ApiConfig.getApiService().getUserStatus()
