@@ -8,7 +8,7 @@ import com.mabes.projectakhir.DataUser
 import com.mabes.projectakhir.R
 import com.mabes.projectakhir.databinding.ItemUserLayoutBinding
 
-class ListUserAdapter(private val listPersonil : List<DataUser>)
+class ListUserAdapter
     :RecyclerView.Adapter<ListUserAdapter.ViewHolder>() {
 
     class ViewHolder(var binding: ItemUserLayoutBinding) : RecyclerView.ViewHolder(binding.root)
@@ -25,7 +25,7 @@ class ListUserAdapter(private val listPersonil : List<DataUser>)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val data = listPersonil[position]
+        val data = listItem[position]
 
         holder.binding.tvItemName.text = data.name
         Glide.with(holder.binding.root)
@@ -36,7 +36,7 @@ class ListUserAdapter(private val listPersonil : List<DataUser>)
         holder.binding.tvItemNRP.text = data.nrp
     }
 
-    override fun getItemCount(): Int = listPersonil.size
+    override fun getItemCount(): Int = listItem.size
 
     interface OnItemClickCallback {
         fun OnItemClicked(userData: DataUser)

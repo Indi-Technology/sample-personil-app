@@ -9,20 +9,20 @@ import android.widget.Toast
 import com.mabes.projectakhir.DataRank
 import com.mabes.projectakhir.RankResponse
 import com.mabes.projectakhir.data.response.retrofit.ApiConfig
-import com.mabes.projectakhir.databinding.ActivityAddPersonilBinding
+import com.mabes.projectakhir.databinding.ActivityAddEditBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class AddEditActivity : AppCompatActivity() {
-    private lateinit var binding:ActivityAddPersonilBinding
+    private lateinit var binding:ActivityAddEditBinding
 
     private val listIdRank=ArrayList<Int>()
     private val listNameRank=ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAddPersonilBinding.inflate(layoutInflater)
+        binding = ActivityAddEditBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         getRank();

@@ -25,7 +25,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mainActivityBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mainActivityBinding.root)
-       showRecyclerView()
+
+        listUserAdapter = ListUserAdapter()
+        mainViewModel.getList("")
+        showRecyclerView()
 
         mainViewModel.listUser.observe(this){
             setUserData(it)
