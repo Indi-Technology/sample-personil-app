@@ -1,13 +1,15 @@
-package com.mabes.projectakhir
+package com.mabes.projectakhir.ui.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.mabes.projectakhir.DataItem
+import com.mabes.projectakhir.R
 import com.mabes.projectakhir.databinding.ItemRecyclerviewBinding
 
-class ListPersonilAdapter(private val listPersonil : List<DataItem>)
-    :RecyclerView.Adapter<ListPersonilAdapter.ViewHolder>() {
+class ListUserAdapter(private val listPersonil : List<DataItem>)
+    :RecyclerView.Adapter<ListUserAdapter.ViewHolder>() {
 
     class ViewHolder(var binding:ItemRecyclerviewBinding)
         :RecyclerView.ViewHolder(binding.root)

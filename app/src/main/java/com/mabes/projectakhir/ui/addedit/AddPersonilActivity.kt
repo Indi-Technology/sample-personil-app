@@ -1,4 +1,4 @@
-package com.mabes.projectakhir
+package com.mabes.projectakhir.ui.addedit
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,6 +6,9 @@ import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
+import com.mabes.projectakhir.DataRank
+import com.mabes.projectakhir.RankResponse
+import com.mabes.projectakhir.data.response.retrofit.ApiConfig
 import com.mabes.projectakhir.databinding.ActivityAddPersonilBinding
 import retrofit2.Call
 import retrofit2.Callback

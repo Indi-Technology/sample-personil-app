@@ -1,15 +1,14 @@
-package com.mabes.projectakhir
+package com.mabes.projectakhir.data.response.retrofit
 
 import androidx.viewbinding.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
 class ApiConfig {
     companion object{
-        fun getApiService():ApiService{
+        fun getApiService(): ApiService {
             val logInterceptor = if(BuildConfig.DEBUG){
                 HttpLoggingInterceptor()
                     .setLevel(HttpLoggingInterceptor.Level.BODY)

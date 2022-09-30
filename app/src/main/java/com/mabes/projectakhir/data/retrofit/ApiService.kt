@@ -1,5 +1,7 @@
-package com.mabes.projectakhir
+package com.mabes.projectakhir.data.response.retrofit
 
+import com.mabes.projectakhir.ListPersonilResponse
+import com.mabes.projectakhir.RankResponse
 import retrofit2.Call
 import retrofit2.http.GET
 
