@@ -16,6 +16,9 @@
         android:theme="@style/Theme.ProjectAkhir"
         tools:targetApi="31">
         <activity
+            android:name=".DetailUserActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.addedit.AddEditActivity"
             android:exported="false" />
         <activity

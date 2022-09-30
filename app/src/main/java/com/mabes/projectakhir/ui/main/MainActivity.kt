@@ -46,6 +46,12 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    override fun onRestart() {
+        super.onRestart()
+        mainViewModel.getList("")
+        showRecyclerView()
+    }
+
     private fun showRecyclerView(){
         mainActivityBinding.rvUser.layoutManager = LinearLayoutManager(
             this@MainActivity)
