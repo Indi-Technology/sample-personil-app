@@ -38,7 +38,6 @@ class MainViewModel: ViewModel() {
                     }
                 }
                 else{
-
                     Log.e(ContentValues.TAG, "onFailure : ${response.message()}")
                 }
             }
