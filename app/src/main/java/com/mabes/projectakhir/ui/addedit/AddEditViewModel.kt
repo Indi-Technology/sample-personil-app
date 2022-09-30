@@ -8,8 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mabes.projectakhir.DataRank
 import com.mabes.projectakhir.ListRankResponse
-import com.mabes.projectakhir.data.response.DataStatus
-import com.mabes.projectakhir.data.response.ListStatusResponse
+import com.mabes.projectakhir.data.response.*
 import com.mabes.projectakhir.data.response.retrofit.ApiConfig
 import retrofit2.Call
 import retrofit2.Callback
@@ -25,6 +24,10 @@ class AddEditViewModel:ViewModel() {
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading:LiveData<Boolean> = _isLoading
+
+    private val _responseMessage = MutableLiveData<String>()
+    val responseMessage:LiveData<String> = _responseMessage
+
 
     init {
         showRanks()
@@ -79,7 +82,46 @@ class AddEditViewModel:ViewModel() {
     }
 
 
-    privare fun postNewUser(inputData:)
+    private fun postNewUser(inputData:SubmitData){
+        _isLoading.value =true
+        val client = ApiConfig.getApiService().postNewUser(
+            nrp = inputData.nrp,
+            name = inputData.name,
+            born_place = inputData.bornPlace,
+            born_date = inputData.bornDate,
+            address = inputData.address,
+            rank_id = inputData.rankId,
+            status_id = inputData.statusId,
+            image = null
+        )
+
+        client.enqueue(object : Callback<SubmitResponse>{
+            override fun onResponse(
+                call: Call<SubmitResponse>,
+                response: Response<SubmitResponse>
+            ) {
+                if(response.isSuccessful){
+                    _isLoading.value= false
+                    if(response.body()!=null){
+                        _responseMessage.value = response.body()?.message
+                    }
+
+                }
+                else{
+                    _isLoading.value =false
+                    Log.e(ContentValues.TAG, "onFailure: ${response.message()}")
+
+                }
+            }
+
+            override fun onFailure(call: Call<SubmitResponse>, t: Throwable) {
+                _isLoading.value=false
+                Log.e(ContentValues.TAG, "onFailure: ${t.message}")
+
+            }
+
+        })
+    }
 
 
 }
