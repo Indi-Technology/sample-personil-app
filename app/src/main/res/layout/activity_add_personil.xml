@@ -5,183 +5,308 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddPersonilActivity">
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16sp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/ic_back_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvAppBarAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="@string/text_add_data"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnBack"
+        app:layout_constraintStart_toEndOf="@+id/btnBack"
+        app:layout_constraintTop_toTopOf="@+id/btnBack" />
+
+    <ProgressBar
+        android:id="@+id/loadRv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBack">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:paddingHorizontal="32dp"
-            android:layout_height="match_parent"> <TextView
-        android:id="@+id/add_name_tv"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Masukan Nama:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <EditText
-        android:id="@+id/add_name_edt"
-        android:layout_marginStart="32dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="masukan nama anda.."
-        android:textSize="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/add_name_tv"/>
-
-    <TextView
-        android:id="@+id/add_nrp_tv"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="32dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Masukan NRP:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/add_name_edt"/>
-
-    <EditText
-        android:id="@+id/add_NRP_edt"
-        android:layout_marginStart="32dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="masukan nrp anda.."
-        android:textSize="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/add_nrp_tv"/>
-
-    <TextView
-        android:id="@+id/add_address_tv"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="32dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Masukan Alamat:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/add_NRP_edt"/>
-
-    <EditText
-
-        android:id="@+id/add_address_edt"
-        android:layout_marginStart="32dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="masukan alamat anda.."
-        android:textSize="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/add_address_tv"/>
-
-    <TextView
-        android:id="@+id/add_tgl_lahir_tv"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="32dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Masukan Tanggal Lahir:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/add_address_edt"/>
-
-    <EditText
-        android:id="@+id/add_tgl_lahir_edt"
-        android:layout_marginStart="32dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="masukan tanggal lahir anda.."
-        android:textSize="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/add_tgl_lahir_tv"/>
-
-    <TextView
-        android:id="@+id/add_tempat_lahir_tv"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="32dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Masukan Tempat Lahir:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/add_tgl_lahir_edt"/>
-
-    <EditText
-        android:id="@+id/add_tempat_lahir_edt"
-        android:layout_marginStart="32dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="masukan tempat lahir anda.."
-        android:textSize="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/add_tempat_lahir_tv"/>
-
-    <TextView
-        android:id="@+id/add_pangkat_tv"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="32dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pilih Pangkat:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/add_tempat_lahir_edt"/>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layout_pangkat"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginHorizontal="32dp"
-
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/add_pangkat_tv">
-
-        <AutoCompleteTextView
-            android:id="@+id/act_pangkat"
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="Pilih pangkat"
-            android:inputType="none"/>
+            android:layout_marginHorizontal="16dp">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:id="@+id/tvNRP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/nrp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/add_status_tv"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="32dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pilih status:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layout_pangkat"/>
+            <EditText
+                android:id="@+id/edNRP"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/bg_edit_text_focused"
+                android:hint="Masukkan NRP Anda"
+                android:paddingStart="10dp"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvNRP" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layout_status"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginHorizontal="32dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/add_status_tv">
 
-        <AutoCompleteTextView
-            android:id="@+id/act_status"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="Pilih status"
-            android:inputType="none"/>
+            <TextView
+                android:id="@+id/tvNama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16sp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Nama"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edNRP" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <EditText
+                android:id="@+id/edNama"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/bg_edit_text_focused"
+                android:hint="Masukkan Nama Anda"
+                android:paddingStart="10dp"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvNama" />
 
-    <Button
-        android:id="@+id/add_submit_btn"
-        android:text="Submit"
-        android:layout_marginTop="32dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layout_status"/>
+            <TextView
+                android:id="@+id/tvAlamat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Alamat"
+
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edNama" />
+
+            <EditText
+                android:id="@+id/edAlamat"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/bg_edit_text_focused"
+                android:hint="Masukkan Alamat Anda"
+                android:paddingStart="10dp"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvAlamat" />
+
+            <TextView
+                android:id="@+id/tvTanggalLahir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Tanggal Lahir"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edAlamat" />
+
+            <EditText
+                android:id="@+id/edTanggalLahir"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/bg_edit_text_focused"
+                android:hint="Masukkan Tanggal Lahir Anda"
+                android:paddingStart="10dp"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTanggalLahir" />
+
+            <TextView
+                android:id="@+id/tvTempatLahir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Tempat Lahir"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edTanggalLahir" />
+
+            <EditText
+                android:id="@+id/edTempatLahir"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/bg_edit_text_focused"
+                android:hint="Masukkan Tempat Lahir Anda"
+                android:paddingStart="10dp"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTempatLahir" />
+
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="KD. Status"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edTempatLahir" />
+
+            <!--            <Spinner-->
+            <!--                android:id="@+id/spinStatus"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="50dp"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/tvStatus" />-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/spinStatus"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toBottomOf="@+id/tvStatus">
+
+                <AutoCompleteTextView
+                    android:id="@+id/act_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Pilih Status"
+                    android:inputType="none" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/tvPangkat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="KD. PKT"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinStatus" />
+
+            <!--            <Spinner-->
+            <!--                android:id="@+id/spinPangkat"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/tvPangkat" />-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/spinPangkat"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvPangkat">
+
+                <AutoCompleteTextView
+                    android:id="@+id/act_pangkat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Pilih Pangkat"
+                    android:inputType="none" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tvFoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Foto"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinPangkat" />
+
+            <Button
+                android:id="@+id/btn_pick_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:backgroundTint="#A30000"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Ambil Foto"
+                android:textAllCaps="false"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvFoto" />
+
+            <TextView
+                android:id="@+id/tvFileFoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="12dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Tidak ada foto."
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:layout_constraintStart_toEndOf="@id/btn_pick_image"
+                app:layout_constraintTop_toTopOf="@+id/btn_pick_image"
+                app:layout_constraintBottom_toBottomOf="@id/btn_pick_image"/>
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="20dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#D60000"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Simpan"
+                android:textAllCaps="false"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_pick_image" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
