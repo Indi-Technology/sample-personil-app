@@ -14,6 +14,7 @@ import com.mabes.projectakhir.DataUser
 
 import com.mabes.projectakhir.databinding.ActivityMainBinding
 import com.mabes.projectakhir.ui.addedit.AddEditActivity
+import com.mabes.projectakhir.ui.detail.DetailUserActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -55,6 +56,15 @@ class MainActivity : AppCompatActivity() {
     private fun showRecyclerView(){
         mainActivityBinding.rvUser.layoutManager = LinearLayoutManager(
             this@MainActivity)
+
+        listUserAdapter.setOnItemClickCallback(object : ListUserAdapter.OnItemClickCallback {
+            override fun OnItemClicked(userData: DataUser) {
+                Log.d("Main DataUser ID: ", userData.id.toString())
+                val intentToDetail = Intent(this@MainActivity, DetailUserActivity::class.java)
+                intentToDetail.putExtra("ID",userData.id)
+                startActivity(intentToDetail)
+            }
+        })
 
     }
 
