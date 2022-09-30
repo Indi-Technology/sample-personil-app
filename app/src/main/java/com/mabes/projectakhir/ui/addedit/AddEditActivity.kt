@@ -6,8 +6,10 @@ import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
+import androidx.activity.viewModels
 import com.mabes.projectakhir.DataRank
-import com.mabes.projectakhir.RankResponse
+import com.mabes.projectakhir.data.response.DataStatus
+
 import com.mabes.projectakhir.data.response.retrofit.ApiConfig
 import com.mabes.projectakhir.databinding.ActivityAddEditBinding
 import retrofit2.Call
@@ -15,33 +17,57 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class AddEditActivity : AppCompatActivity() {
-    private lateinit var binding:ActivityAddEditBinding
+    private lateinit var addEditBinding:ActivityAddEditBinding
+    private val addEditViewModel : AddEditViewModel by viewModels()
 
     private val listIdRank=ArrayList<Int>()
     private val listNameRank=ArrayList<String>()
 
+    private val listIdStatus=ArrayList<Int>()
+    private val listNameStatus=ArrayList<String>()
+
+    private var rankId = 0
+    private var statusId = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAddEditBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        addEditBinding = ActivityAddEditBinding.inflate(layoutInflater)
+        setContentView(addEditBinding.root)
 
-        getRank();
+        addEditViewModel.listRank.observe(this){
+            showRank(it)
+        }
+
+        addEditViewModel.listStatus.observe(this){
+            showStatus(it)
+        }
+
+
 
     }
 
     private fun showRank(data:List<DataRank>){
-        Toast.makeText(this,"Show Data Text", Toast.LENGTH_LONG).show()
         data.forEach({
             listIdRank.add(it.id)
             listNameRank.add(it.name)
         })
         val arrayAdapter = ArrayAdapter(this,
             com.google.android.material.R.layout.support_simple_spinner_dropdown_item, listNameRank)
-        val actRanks:AutoCompleteTextView = binding.actPangkat
+        val actRanks:AutoCompleteTextView = addEditBinding.actPangkat
         actRanks.setAdapter(arrayAdapter)
     }
 
-    private fun getRank(){
 
+    private fun showStatus(data:List<DataStatus>){
+        data.forEach({
+            listIdStatus.add(it.id)
+            listNameStatus.add(it.name)
+        })
+        val arrayAdapter = ArrayAdapter(this,
+            com.google.android.material.R.layout.support_simple_spinner_dropdown_item, listNameStatus)
+        val actStatuses:AutoCompleteTextView = addEditBinding.actStatus
+        actStatuses.setAdapter(arrayAdapter)
     }
+
+
 }
