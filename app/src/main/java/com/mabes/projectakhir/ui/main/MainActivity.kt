@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.mabes.projectakhir.DataUser
 
 import com.mabes.projectakhir.databinding.ActivityMainBinding
+import com.mabes.projectakhir.ui.addedit.AddEditActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -36,6 +37,11 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel.isLoading.observe(this){
             showLoading(it)
+        }
+
+        mainActivityBinding.addFab.setOnClickListener{
+            val intentToAddEditActivity = Intent(this, AddEditActivity::class.java)
+            startActivity(intentToAddEditActivity)
         }
 
     }

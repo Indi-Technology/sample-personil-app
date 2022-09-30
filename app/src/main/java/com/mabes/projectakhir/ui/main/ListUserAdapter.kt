@@ -58,7 +58,8 @@ class ListUserAdapter
                     return false
                 }
 
-            }).placeholder(R.drawable.ic_baseline_account_circle_24)
+            })
+            .placeholder(R.drawable.ic_baseline_account_circle_24)
             .into(holder.binding.imgItemUser)
         holder.binding.tvItemRank.text = data.rank
         holder.binding.tvItemNRP.text = data.nrp
