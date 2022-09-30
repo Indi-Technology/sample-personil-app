@@ -7,10 +7,7 @@ import com.mabes.projectakhir.ListUserResponse
 import com.mabes.projectakhir.data.response.ListStatusResponse
 import com.mabes.projectakhir.data.response.SubmitResponse
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiService {
     @GET("api/pers")
@@ -34,6 +31,11 @@ interface ApiService {
         @Field("status_id") status_id: Int,
         @Field("image") image: String ?= null
     ):Call<SubmitResponse>
+
+    @GET("api/pers/{id}")
+    fun getUserById(
+        @Path("id") id:Int
+    )
 
 
 
