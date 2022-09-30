@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import com.mabes.projectakhir.DataRank
 import com.mabes.projectakhir.data.response.DataStatus
+import com.mabes.projectakhir.data.response.SubmitData
 
 import com.mabes.projectakhir.data.response.retrofit.ApiConfig
 import com.mabes.projectakhir.databinding.ActivityAddEditBinding
@@ -40,6 +41,34 @@ class AddEditActivity : AppCompatActivity() {
 
         addEditViewModel.listStatus.observe(this){
             showStatus(it)
+        }
+
+        addEditBinding.actStatus.setOnItemClickListener { parent, view, position, id ->
+            statusId =(parent.getItemIdAtPosition(position)+1).toInt()
+
+        }
+
+        addEditBinding.actPangkat.setOnItemClickListener { parent, view, position, id ->
+            rankId =(parent.getItemIdAtPosition(position)+1).toInt()
+        }
+
+        addEditBinding.btnSubmit.setOnClickListener {
+            val submitData = SubmitData(
+                name = addEditBinding.edNama.text.toString(),
+                address = addEditBinding.edAlamat.text.toString(),
+                bornDate = addEditBinding.edTanggalLahir.text.toString(),
+                nrp = addEditBinding.edNRP.text.toString(),
+                bornPlace = addEditBinding.edNRP.text.toString(),
+                rankId = rankId,
+                statusId = statusId,
+                image = null
+            )
+            addEditViewModel.postNewUser(submitData)
+
+            addEditViewModel.responseMessage.observe(this){
+                Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+            }
+            finish()
         }
 
 

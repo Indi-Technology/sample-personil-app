@@ -82,7 +82,7 @@ class AddEditViewModel:ViewModel() {
     }
 
 
-    private fun postNewUser(inputData:SubmitData){
+    fun postNewUser(inputData:SubmitData){
         _isLoading.value =true
         val client = ApiConfig.getApiService().postNewUser(
             nrp = inputData.nrp,
