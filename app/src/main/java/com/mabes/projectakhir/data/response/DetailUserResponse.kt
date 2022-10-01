@@ -1,21 +1,20 @@
-package com.mabes.projectakhir.data.response
+package com.mabes.projectakhir.data.remote.response
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
-@Parcelize
 data class DetailUserResponse(
 
 	@field:SerializedName("data")
 	val data: Data
-) : Parcelable
+)
 
 @Parcelize
 data class Data(
 
 	@field:SerializedName("image")
-	val image: String,
+	val image: String? = null,
 
 	@field:SerializedName("address")
 	val address: String,
@@ -46,4 +45,4 @@ data class Data(
 
 	@field:SerializedName("status")
 	val status: String
-) : Parcelable
+): Parcelable

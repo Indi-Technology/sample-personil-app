@@ -10,34 +10,37 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-
-import com.mabes.projectakhir.R
 import com.mabes.projectakhir.data.remote.response.DataUser
+import com.mabes.projectakhir.R
 import com.mabes.projectakhir.databinding.ItemUserLayoutBinding
 
-class ListUserAdapter
-    :RecyclerView.Adapter<ListUserAdapter.ViewHolder>() {
+class ListUsersAdapter: RecyclerView.Adapter<ListUsersAdapter.ViewHolder>() {
+    private lateinit var onItemClickCallback: OnItemClickCallback
+    private val listItem = ArrayList<DataUser>()
 
-    class ViewHolder(var binding: ItemUserLayoutBinding) : RecyclerView.ViewHolder(binding.root)
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
-            : ViewHolder {
-        val binding = ItemUserLayoutBinding
-            .inflate(
-                LayoutInflater.from(parent.context),
-                parent, false
-            )
+    fun setListUser(items: List<DataUser>) {
+        listItem.clear()
+        listItem.addAll(items)
+        notifyDataSetChanged()
+    }
 
+    class ViewHolder(var binding: ItemUserLayoutBinding):RecyclerView.ViewHolder(binding.root)
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val binding = ItemUserLayoutBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val data = listItem[position]
+        val userData = listItem[position]
 
-        holder.binding.tvItemName.text = data.name
         Glide.with(holder.binding.root)
-            .load(data.image)
-            .listener(object: RequestListener<Drawable>{
+            .load(userData.image)
+            .listener(object: RequestListener<Drawable> {
                 override fun onResourceReady(
                     resource: Drawable?,
                     model: Any?,
@@ -58,36 +61,20 @@ class ListUserAdapter
                     holder.binding.pbLoading.visibility = View.GONE
                     return false
                 }
-
             })
             .placeholder(R.drawable.ic_baseline_account_circle_24)
             .into(holder.binding.imgItemUser)
-        holder.binding.tvItemRank.text = data.rank
-        holder.binding.tvItemNRP.text = data.nrp
-        holder.binding.root.setOnClickListener{
-            onItemClickCallback.OnItemClicked(listItem[holder.adapterPosition])
-                   }
+
+        holder.binding.tvItemName.setText(userData.name)
+        holder.binding.tvItemNRP.setText("NRP. ${userData.nrp}")
+        holder.binding.tvItemRank.setText(userData.rank)
+        holder.binding.root.setOnClickListener { onItemClickCallback.onItemClicked(listItem[holder.adapterPosition]) }
+
     }
 
     override fun getItemCount(): Int = listItem.size
 
     interface OnItemClickCallback {
-        fun OnItemClicked(userData: DataUser)
+        fun onItemClicked(userData: DataUser)
     }
-
-    private lateinit var onItemClickCallback: OnItemClickCallback
-    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
-        this.onItemClickCallback = onItemClickCallback
-    }
-
-    private val listItem = ArrayList<DataUser>()
-    fun setListUser(items : List<DataUser>){
-        listItem.clear()
-        listItem.addAll(items)
-        notifyDataSetChanged()
-}
-    
-    
-    
-    
 }

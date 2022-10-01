@@ -1,13 +1,14 @@
 package com.mabes.projectakhir.data.remote.response
 
+
 import com.google.gson.annotations.SerializedName
 
-data class ListStatusResponse(
+data class ListRanksResponse(
     @field:SerializedName("data")
-    val data: List<DataStatus>
+    val data: List<DataRanks>
 )
 
-data class DataStatus(
+data class DataRanks(
 
     @field:SerializedName("id")
     val id: Int,
@@ -21,4 +22,4 @@ data class DataStatus(
     @field:SerializedName("updated_at")
     val updatedAt: String,
 
-)
+    )
